@@ -40,7 +40,7 @@ application/logs/*
 ### https://raw.github.com/github/gitignore/ea28c14da0faf75047165c10223635ba95566ad7/Composer.gitignore
 
 composer.phar
-/vendor/
+vendor/
 
 # Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file

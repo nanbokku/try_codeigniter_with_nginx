@@ -1,0 +1,14 @@
+{
+  "name": "nan/codeigniter",
+  "require": {
+    "codeigniter/framework": "^3.1"
+  },
+  "authors": [
+    {
+      "name": "nanbokku",
+      "email": "n1510126@edu.cc.uec.ac.jp"
+    }
+  ],
+  "require-dev": {
+  }
+}
