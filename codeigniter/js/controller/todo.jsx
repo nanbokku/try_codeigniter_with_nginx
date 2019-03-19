@@ -10,7 +10,7 @@ export class TodoController {
     this.todosModel = new TodosModel();
 
     // initialize
-    $.get('/todo/all').done(res => {
+    $.get('/todomvc/todos/all').done(res => {
       console.log(res);
       this.initialize(res);
     });
@@ -22,9 +22,9 @@ export class TodoController {
         onInputed={text => {
           $.ajax({
             method: 'POST',
-            url: '/todo/',
+            url: '/todomvc/todos',
             data: JSON.stringify({ contents: text }),
-            contentType: 'application/json',
+            contentType: 'application/json'
           }).done(res => {
             this.todosModel.add({ id: res, contents: text, completed: false });
           });
@@ -40,10 +40,10 @@ export class TodoController {
         onChecked={(id, checked) => {
           $.ajax({
             method: 'PUT',
-            url: '/todo/' + id,
+            url: '/todomvc/todos' + id,
             data: JSON.stringify({ completed: checked }),
             dataType: 'json',
-            contentType: 'application/json',
+            contentType: 'application/json'
           }).done(res => {
             this.todosModel.update({ id: id, completed: checked });
           });
@@ -52,10 +52,10 @@ export class TodoController {
           console.log('contents ' + contents);
           $.ajax({
             method: 'PUT',
-            url: '/todo/' + id,
+            url: '/todomvc/todos' + id,
             data: JSON.stringify({ contents: contents }),
             dataType: 'json',
-            contentType: 'application/json',
+            contentType: 'application/json'
           }).done(res => {
             console.log(res);
             this.todosModel.update({ id: id, contents: contents });
