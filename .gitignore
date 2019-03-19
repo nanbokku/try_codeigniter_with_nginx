@@ -1,0 +1,49 @@
+### https://raw.github.com/github/gitignore/ea28c14da0faf75047165c10223635ba95566ad7/Global/VisualStudioCode.gitignore
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+
+### https://raw.github.com/github/gitignore/ea28c14da0faf75047165c10223635ba95566ad7/CodeIgniter.gitignore
+
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
+
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+#codeigniter 3
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+/vendor/
+
+
+### https://raw.github.com/github/gitignore/ea28c14da0faf75047165c10223635ba95566ad7/Global/Vagrant.gitignore
+
+# General
+.vagrant/
+
+# Log files (if you are creating logs in debug mode, uncomment this)
+# *.logs
+
+
+### https://raw.github.com/github/gitignore/ea28c14da0faf75047165c10223635ba95566ad7/Composer.gitignore
+
+composer.phar
+/vendor/
+
+# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
+
+
