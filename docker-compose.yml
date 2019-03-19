@@ -1,0 +1,29 @@
+version: '2'
+services:
+  db:
+    build: ./mysql
+    container_name: db
+    volumes:
+      - /vagrant/mysql:/home/app/mysql
+      - /vagrant/mysql/init:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+
+  app:
+    build: ./codeigniter
+    container_name: php
+    volumes:
+      - /vagrant/codeigniter:/var/www/html
+    depends_on:
+      - db
+
+  web:
+    image: nginx
+    container_name: nginx
+    volumes:
+      - /vagrant/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - /vagrant/codeigniter:/var/www/html
+    ports:
+      - 80:80
+    depends_on:
+      - app
