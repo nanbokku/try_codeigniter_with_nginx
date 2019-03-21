@@ -11,11 +11,11 @@ class Todomvc extends CI_Controller
         $this->load->model('Todo_model', 'todoModel');
     }
 
-    public function __remap($method, $params = [])
+    public function _remap($method, $params = [])
     {
         if ($method === 'todos') {
             $requestMethod = strtolower($this->input->server('REQUEST_METHOD'));
-            $this->{$method}($params);
+            $this->{$requestMethod}($params);
         }
     }
 
@@ -56,8 +56,12 @@ class Todomvc extends CI_Controller
 
     public function post($params = [])
     {
-        $contents = (string) $this->input->input_stream('contents');
-        $this->model->add($contents);
+        $data = json_decode($this->input->raw_input_stream, true);
+        $contents = $data['contents'];
+        $id = $this->todoModel->add($contents);
+
+        $this->output->set_header('Content-Type:application/json;charset=utf-8');
+        $this->output->set_output($id);
     }
 
     public function put($params)
@@ -69,7 +73,7 @@ class Todomvc extends CI_Controller
         }
 
         $id = (int) ($params[0]);
-        $data = json_decode($this->input->raw_input_stream());
-        $this->model->update($id, $data);
+        $data = json_decode($this->input->raw_input_stream, true);
+        $this->todoModel->update($id, $data);
     }
 }

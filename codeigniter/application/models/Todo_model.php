@@ -8,7 +8,7 @@ class Todo_model extends CI_Model
     {
         parent::__construct();
 
-        $this->load->database('todo_database', false, true);
+        $this->load->database('todo', false, true);
     }
 
     public function fetchById($id)
@@ -17,16 +17,24 @@ class Todo_model extends CI_Model
             throw new Exception('argument is unset in ' + __METHOD__);
         }
 
-        $data = $this->db->select('*')->from('todos')->where('id', $id)->get();
+        $result = $this->db->select('*')->from('todos')->where('id', $id)->get();
 
-        return $data->row_array();
+        $data = $result->row_array();
+
+        return $this->convert($data);
     }
 
     public function fetchAll()
     {
-        $data = $this->db->get('todos');
+        $result = $this->db->get('todos');
 
-        return $data->result_array();
+        $data = $result->result_array();
+        foreach ($data as &$row) {
+            $row = $this->convert($row);
+        }
+        unset($row);
+
+        return $data;
     }
 
     public function add($contents)
@@ -39,5 +47,22 @@ class Todo_model extends CI_Model
     public function update($id, $data)
     {
         $this->db->set($data)->where('id', $id)->update('todos');
+    }
+
+    // 全て string 型になっているので必要に応じて型変換を行う
+    private function convert($data)
+    {
+        foreach ($data as $key => &$val) {
+            if ($key === 'id') {
+                $val = (int) $val;
+                continue;
+            }
+            if ($key === 'completed') {
+                $val = $val === '0' ? false : true;
+            }
+        }
+        unset($val);    // $val の参照を切る
+
+        return $data;
     }
 }
