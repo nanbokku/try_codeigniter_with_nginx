@@ -6,7 +6,7 @@ export class TodosView extends React.Component {
     super(props);
 
     this.state = {
-      todos: this.props.todos,
+      todos: this.props.todos
     };
 
     this.props.model.events.addEventListener('added', todo => {
@@ -43,13 +43,13 @@ export class TodosView extends React.Component {
 
   add(todo) {
     this.setState({
-      todos: this.state.todos.concat(todo),
+      todos: this.state.todos.concat(todo)
     });
   }
 
   update(todo) {
-    const index = this.state.todos.findIndex(todo => {
-      return todo.id === id;
+    const index = this.state.todos.findIndex(item => {
+      return item.id === todo.id;
     });
     const tmp = this.state.todos;
     tmp[index] = todo;

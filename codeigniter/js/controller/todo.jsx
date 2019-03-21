@@ -40,9 +40,8 @@ export class TodoController {
         onChecked={(id, checked) => {
           $.ajax({
             method: 'PUT',
-            url: '/todomvc/todos' + id,
+            url: '/todomvc/todos/' + id,
             data: JSON.stringify({ completed: checked }),
-            dataType: 'json',
             contentType: 'application/json'
           }).done(res => {
             this.todosModel.update({ id: id, completed: checked });
@@ -52,9 +51,8 @@ export class TodoController {
           console.log('contents ' + contents);
           $.ajax({
             method: 'PUT',
-            url: '/todomvc/todos' + id,
+            url: '/todomvc/todos/' + id,
             data: JSON.stringify({ contents: contents }),
-            dataType: 'json',
             contentType: 'application/json'
           }).done(res => {
             console.log(res);
