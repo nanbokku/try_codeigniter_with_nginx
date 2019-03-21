@@ -21,6 +21,7 @@ services:
     image: nginx
     container_name: nginx
     volumes:
+      - /vagrant/nginx:/home/app/nginx
       - /vagrant/nginx/default.conf:/etc/nginx/conf.d/default.conf
       - /vagrant/codeigniter:/var/www/html
     ports:
