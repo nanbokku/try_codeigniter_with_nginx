@@ -75,20 +75,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = true;
 
-$db['default'] = [
-    'dsn' => '',
-    'hostname' => 'localhost',
-    'username' => '',
-    'password' => '',
+$db['todo'] = [
+    'dsn' => 'mysql:host=db;dbname=todo_database;port=3306;',
+    'hostname' => '',
+    'username' => 'root',
+    'password' => 'root',
     'database' => '',
-    'dbdriver' => 'mysqli',
+    'dbdriver' => 'pdo',
     'dbprefix' => '',
     'pconnect' => false,
     'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => false,
     'cachedir' => '',
-    'char_set' => 'utf8',
-    'dbcollat' => 'utf8_general_ci',
+    'char_set' => 'utf8mb4',
+    'dbcollat' => 'utf8mb4_bin',
     'swap_pre' => '',
     'encrypt' => false,
     'compress' => false,
